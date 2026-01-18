@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>bucketteam</title>
+  <meta name="description" content="bucketteam — team profile." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="#">🥞 bucketteam</a>
+      <nav class="nav" id="nav">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#team">Team</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h1>bucketteam</h1>
+          <p class="lead">We are a small team collaborating on open-source and infrastructure projects. Our mascot: 🥞</p>
+          <p class="hero-ctas">
+            <a class="btn primary" href="#projects">View Projects</a>
+            <a class="btn ghost" href="#contact">Get in touch</a>
+          </p>
+        </div>
+        <div class="hero-card">
+          <div class="metrics">
+            <div class="metric">
+              <span class="num">Open</span>
+              <span class="label">Collaborative</span>
+            </div>
+            <div class="metric">
+              <span class="num">Mascot</span>
+              <span class="label">🥞 Pancake</span>
+            </div>
+            <div class="metric">
+              <span class="num">Projects</span>
+              <span class="label">Active</span>
+            </div>
+          </div>
+          <div class="card-graph" aria-hidden>
+            <svg viewBox="0 0 200 80" class="spark">
+              <polyline fill="none" stroke="#fff" stroke-opacity="0.9" stroke-width="3" points="0,60 30,30 60,40 90,20 120,35 150,10 180,25 200,20" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="container features">
+      <h2 class="section-title">About</h2>
+      <p class="muted">This is the official bucketteam profile page. We collaborate on projects and maintain open-source repos. Our focus is reliability, simplicity and community-driven work.</p>
+    </section>
+
+    <section id="projects" class="container projects">
+      <h2 class="section-title">Projects</h2>
+      <div class="grid cards">
+        <article class="card">
+          <h3>bucketos</h3>
+          <p>Primary project: operating system/runtime components. See code and issues on GitHub.</p>
+          <p><a class="btn ghost" href="https://github.com/Bucketnight/bucketos" target="_blank" rel="noopener">View on GitHub</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section id="team" class="container team">
+      <h2 class="section-title">Team</h2>
+      <p class="muted">No team members listed publicly. Want to add members? Edit this page.</p>
+      <div class="mascot card glass" style="margin-top:1rem;padding:1rem;text-align:center;font-size:2rem;">🥞</div>
+    </section>
+
+    <section id="contact" class="container contact">
+      <h2 class="section-title">Contact</h2>
+      <p>For inquiries, email <a href="mailto:placeholder">placeholder</a>.</p>
+      <form class="contact-form" action="#" onsubmit="alert('Demo form — replace with your endpoint'); return false;">
+        <input type="text" placeholder="Name">
+        <input type="email" placeholder="Email">
+        <textarea placeholder="Message" rows="4"></textarea>
+        <button class="btn primary" type="submit">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>© bucketteam</div>
+      <div class="muted">Mascot: 🥞 · <a href="https://github.com/bucketteam/bucketteam.github.io">Source</a></div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
