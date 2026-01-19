@@ -1,103 +1,308 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>bucketteam</title>
-  <meta name="description" content="bucketteam — team profile." />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css">
+<meta charset="UTF-8">
+
+<!-- ===== TAB ICON (PANCAKE LOGO) ===== -->
+<link rel="icon" href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+<text y='.9em' font-size='90'>🥞</text>
+</svg>">
+
+<title>The Bucket Kernel Archives</title>
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: system-ui, sans-serif;
+    background: linear-gradient(120deg, #050b1a, #0b1e3a, #050b1a);
+    background-size: 400% 400%;
+    animation: bgmove 15s ease infinite;
+    color: #e6ecff;
+}
+
+@keyframes bgmove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.wrapper { max-width: 900px; margin: 2rem auto; }
+
+header {
+    background: #0f1b33;
+    border-radius: 10px;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 0 25px rgba(0,120,255,.25);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 { font-size: 2.2rem; }
+
+header nav a {
+    margin-left: 1rem;
+    color: #7db7ff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+header nav a:hover { color: #ffffff; }
+
+.logo { font-size: 3rem; }
+
+.panel {
+    margin-top: 1.5rem;
+    background: #0c152a;
+    border-radius: 10px;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 0 20px rgba(0,0,0,.5);
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+table { border-collapse: collapse; }
+
+td {
+    padding: .35rem .8rem;
+}
+
+td:first-child {
+    font-weight: bold;
+    color: #7db7ff;
+}
+
+a { color: #8fc1ff; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.latest {
+    background: linear-gradient(135deg, #2f7bff, #004cff);
+    border-radius: 12px;
+    padding: 1.2rem 1.5rem;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(0,100,255,.6);
+}
+
+.latest .ver {
+    font-size: 2.6rem;
+    font-weight: bold;
+}
+
+.latest a {
+    display: inline-block;
+    margin-top: .5rem;
+    padding: .4rem .9rem;
+    background: #fff;
+    color: #0033aa;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.releases {
+    margin-top: 1.5rem;
+    width: 100%;
+}
+
+.releases th, .releases td {
+    padding: .5rem;
+    border-bottom: 1px solid #1c2f55;
+    text-align: left;
+}
+
+footer {
+    margin-top: 2rem;
+    text-align: center;
+    color: #7a8db5;
+    font-size: .9rem;
+}
+
+/* ===== STATUS MODAL ===== */
+#statusModal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.75);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.status-box {
+    background: #0f1b33;
+    border-radius: 12px;
+    width: 520px;
+    padding: 1.5rem;
+    box-shadow: 0 0 40px rgba(0,120,255,.6);
+    animation: pop .25s ease-out;
+}
+
+@keyframes pop {
+    from { transform: scale(.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.status-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.status-header h2 { color: #9ec9ff; }
+
+.close {
+    cursor: pointer;
+    font-size: 1.4rem;
+}
+
+.status-content {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.status-content p {
+    margin-bottom: .6rem;
+    font-size: 1.1rem;
+}
+
+iframe {
+    width: 100%;
+    height: 260px;
+    border: none;
+    border-radius: 10px;
+}
+</style>
 </head>
+
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="logo" href="#">🥞 bucketteam</a>
-      <nav class="nav" id="nav">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#team">Team</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+
+<div class="wrapper">
+
+<header>
+    <div>
+        <h1>The Bucket Kernel Archives</h1>
+        <nav>
+            <a>About</a>
+            <a>Contact</a>
+            <a>FAQ</a>
+            <a>Releases</a>
+            <a onclick="openStatus()">Status</a>
+        </nav>
     </div>
-  </header>
+    <div class="logo">🥞</div>
+</header>
 
-  <main>
-    <section class="hero">
-      <div class="container hero-inner">
-        <div class="hero-text">
-          <h1>bucketteam</h1>
-          <p class="lead">We are a small team collaborating on open-source and infrastructure projects. Our mascot: 🥞</p>
-          <p class="hero-ctas">
-            <a class="btn primary" href="#projects">View Projects</a>
-            <a class="btn ghost" href="#contact">Get in touch</a>
-          </p>
+<div class="panel">
+    <div class="top">
+        <table>
+            <tr>
+                <td>HTTP</td>
+                <td>
+                    <a href="https://github.com/Bucketnight/bucketkernel">
+                        https://github.com/Bucketnight/bucketkernel
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>GIT</td>
+                <td>
+                    <a href="https://github.com/Bucketnight/bucketkernel.git">
+                        https://github.com/Bucketnight/bucketkernel.git
+                    </a>
+                </td>
+            </tr>
+        </table>
+
+        <div class="latest">
+            <div>Latest Release</div>
+            <div class="ver">v0.0.1</div>
+            <a href="https://github.com/Bucketnight/bucketkernel/archive/refs/tags/v0.0.1.zip">
+                Download
+            </a>
         </div>
-        <div class="hero-card">
-          <div class="metrics">
-            <div class="metric">
-              <span class="num">Open</span>
-              <span class="label">Collaborative</span>
-            </div>
-            <div class="metric">
-              <span class="num">Mascot</span>
-              <span class="label">🥞 Pancake</span>
-            </div>
-            <div class="metric">
-              <span class="num">Projects</span>
-              <span class="label">Active</span>
-            </div>
-          </div>
-          <div class="card-graph" aria-hidden>
-            <svg viewBox="0 0 200 80" class="spark">
-              <polyline fill="none" stroke="#fff" stroke-opacity="0.9" stroke-width="3" points="0,60 30,30 60,40 90,20 120,35 150,10 180,25 200,20" />
-            </svg>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="about" class="container features">
-      <h2 class="section-title">About</h2>
-      <p class="muted">This is the official bucketteam profile page. We collaborate on projects and maintain open-source repos. Our focus is reliability, simplicity and community-driven work.</p>
-    </section>
-
-    <section id="projects" class="container projects">
-      <h2 class="section-title">Projects</h2>
-      <div class="grid cards">
-        <article class="card">
-          <h3>bucketos</h3>
-          <p>Primary project: operating system/runtime components. See code and issues on GitHub.</p>
-          <p><a class="btn ghost" href="https://github.com/Bucketnight/bucketos" target="_blank" rel="noopener">View on GitHub</a></p>
-        </article>
-      </div>
-    </section>
-
-    <section id="team" class="container team">
-      <h2 class="section-title">Team</h2>
-      <p class="muted">No team members listed publicly. Want to add members? Edit this page.</p>
-      <div class="mascot card glass" style="margin-top:1rem;padding:1rem;text-align:center;font-size:2rem;">🥞</div>
-    </section>
-
-    <section id="contact" class="container contact">
-      <h2 class="section-title">Contact</h2>
-      <p>For inquiries, email <a href="mailto:placeholder">placeholder</a>.</p>
-      <form class="contact-form" action="#" onsubmit="alert('Demo form — replace with your endpoint'); return false;">
-        <input type="text" placeholder="Name">
-        <input type="email" placeholder="Email">
-        <textarea placeholder="Message" rows="4"></textarea>
-        <button class="btn primary" type="submit">Send</button>
-      </form>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div>© bucketteam</div>
-      <div class="muted">Mascot: 🥞 · <a href="https://github.com/bucketteam/bucketteam.github.io">Source</a></div>
     </div>
-  </footer>
 
-  <script src="assets/js/main.js" defer></script>
+    <table class="releases">
+        <tr>
+            <th>Type</th>
+            <th>Version</th>
+            <th>Date</th>
+            <th>Downloads</th>
+        </tr>
+        <tr>
+            <td>stable</td>
+            <td>v0.0.1</td>
+            <td>2026-01-?</td>
+            <td>
+                <a href="https://github.com/Bucketnight/bucketkernel/archive/refs/tags/v0.0.1.zip">zip</a>
+                <a href="https://github.com/Bucketnight/bucketkernel/archive/refs/tags/v0.0.1.tar.gz">tarball</a>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<footer>The Bucket Kernel Archives</footer>
+
+</div>
+
+<!-- ===== STATUS MODAL ===== -->
+<div id="statusModal">
+    <div class="status-box">
+        <div class="status-header">
+            <h2>Developer Status</h2>
+            <span class="close" onclick="closeStatus()">✕</span>
+        </div>
+        <div class="status-content" id="statusContent"></div>
+    </div>
+</div>
+
+<script>
+/* ===== EDIT THIS VARIABLE ONLY ===== */
+const ClassStatus = "working";
+// "working" | "bored" | "free"
+
+function openStatus() {
+    document.getElementById("statusModal").style.display = "flex";
+    renderStatus();
+}
+
+function closeStatus() {
+    document.getElementById("statusModal").style.display = "none";
+}
+
+function renderStatus() {
+    const box = document.getElementById("statusContent");
+
+    if (ClassStatus === "working") {
+        box.innerHTML = `
+            <p><strong>ClassStatus:</strong> working</p>
+            <p>IM WORKING 💻</p>
+            <iframe src="https://tenor.com/embed/9720903636946726894"></iframe>
+        `;
+    }
+
+    if (ClassStatus === "bored") {
+        box.innerHTML = `
+            <p><strong>ClassStatus:</strong> bored</p>
+            <p>bored 😑</p>
+            <iframe src="https://tenor.com/embed/8441237135347638084"></iframe>
+        `;
+    }
+
+    if (ClassStatus === "free") {
+        box.innerHTML = `
+            <p><strong>ClassStatus:</strong> free</p>
+            <p>FREEEEEEEE 🤓</p>
+            <iframe src="https://tenor.com/embed/18221933230434867320"></iframe>
+        `;
+    }
+}
+</script>
+
 </body>
 </html>
